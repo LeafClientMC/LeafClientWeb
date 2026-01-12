@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Leaf Client | The Ultimate Minecraft Experience</title>
     <link rel="icon" href="assets/logo.png">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=<%= new Date().getTime() %>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
@@ -31,6 +31,9 @@
 
     <!-- Discord Embed Color (Leaf Green) -->
     <meta name="theme-color" content="#2ecc71">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
 </head>
 
 <body>
@@ -42,8 +45,7 @@
 
     <nav class="navbar">
         <div class="logo">
-            <img src="assets/logo.png"
-                alt="Leaf Client Logo">
+            <img src="assets/logo.png" alt="Leaf Client Logo">
             Leaf Client
         </div>
         <div class="nav-links">
@@ -149,33 +151,27 @@
 
         <div class="gallery-grid">
             <div class="gallery-item scroll-reveal">
-                <img src="assets/freelook-preview.png"
-                    alt="Freelook Preview">
+                <img src="assets/freelook-preview.png" alt="Freelook Preview">
                 <div class="overlay">Freelook Preview</div>
             </div>
             <div class="gallery-item scroll-reveal delay-1">
-                <img src="assets/client-ui.png"
-                    alt="Client UI">
+                <img src="assets/client-ui.png" alt="Client UI">
                 <div class="overlay">Clean UI</div>
             </div>
             <div class="gallery-item scroll-reveal delay-2">
-                <img src="assets/launcher-preview.png"
-                    alt="Launcher Main">
+                <img src="assets/launcher-preview.png" alt="Launcher Main">
                 <div class="overlay">Modern Launcher</div>
             </div>
             <div class="gallery-item scroll-reveal">
-                <img src="assets/launcher-versions.png"
-                    alt="Launcher Settings">
+                <img src="assets/launcher-versions.png" alt="Launcher Settings">
                 <div class="overlay">Version Selection</div>
             </div>
             <div class="gallery-item scroll-reveal delay-1">
-                <img src="assets/server-list.png"
-                    alt="Launcher Login">
+                <img src="assets/server-list.png" alt="Launcher Login">
                 <div class="overlay">Custom QuickJoin Servers</div>
             </div>
             <div class="gallery-item scroll-reveal delay-2">
-                <img src="assets/skin-selection.png"
-                    alt="Skin Rendering">
+                <img src="assets/skin-selection.png" alt="Skin Rendering">
                 <div class="overlay">Skin Selection</div>
             </div>
         </div>
@@ -220,8 +216,7 @@
         <div class="footer-top">
             <div class="footer-brand">
                 <div class="logo-text">
-                    <img src="assets/logo.png"
-                        alt="Leaf Logo">
+                    <img src="assets/logo.png" alt="Leaf Logo">
                     Leaf Client
                 </div>
                 <p>The first open source professional launcher with an in-game client.</p>

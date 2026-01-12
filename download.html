@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Download Leaf Client</title>
     <link rel="icon" href="assets/logo.png">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=<%= new Date().getTime() %>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
@@ -17,11 +17,14 @@
     <meta property="og:title" content="Leaf Client | Boost Your FPS">
     <meta property="og:description"
         content="The lightest, fastest, and most customizable open-source Minecraft client. Built for performance. Download the Beta now!">
-    <meta property="og:image"
-        content="assets/launcher-preview.png">
+    <meta property="og:image" content="assets/launcher-preview.png">
 
     <!-- Discord Embed Color (Leaf Green) -->
     <meta name="theme-color" content="#2ecc71">
+
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
 </head>
 
 <body>
@@ -30,8 +33,7 @@
         <div class="logo">
             <a href="index.html"
                 style="text-decoration: none; color: white; display: flex; align-items: center; gap: 0.8rem;">
-                <img src="assets/logo.png"
-                    alt="Leaf Client Logo">
+                <img src="assets/logo.png" alt="Leaf Client Logo">
                 Leaf Client
             </a>
         </div>
