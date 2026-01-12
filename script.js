@@ -6,25 +6,28 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.appendChild(modalElement);
     }
 
-
+    // --- SCROLL REVEAL ANIMATION (IntersectionObserver) ---
+    // Replaced old scroll listener with Observer for better mobile/Edge support
     const revealElements = document.querySelectorAll('.scroll-reveal');
 
-    const revealOnScroll = () => {
-        const windowHeight = window.innerHeight;
-        const elementVisible = 100;
-
-        revealElements.forEach((element) => {
-            const elementTop = element.getBoundingClientRect().top;
-
-            if (elementTop < windowHeight - elementVisible) {
-                element.classList.add('visible');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                // Stop observing once visible to prevent re-triggering
+                observer.unobserve(entry.target);
             }
         });
-    };
+    }, {
+        threshold: 0.1, // Trigger when 10% of the element is visible
+        rootMargin: "0px 0px -50px 0px" // Trigger slightly before it hits the bottom
+    });
 
-    window.addEventListener('scroll', revealOnScroll);
-    revealOnScroll();
+    revealElements.forEach((element) => {
+        observer.observe(element);
+    });
 
+    // --- SMOOTH SCROLLING ---
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             const targetId = this.getAttribute('href');
@@ -46,6 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // --- GITHUB RELEASE FETCHING ---
     const repoOwner = "LeafClientMC";
     const repoName = "LeafClient";
     const downloadBtn = document.getElementById('download-btn');
