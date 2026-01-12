@@ -124,14 +124,23 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function openDownloadModal() {
-        modal.classList.add('active');
-        document.body.classList.add('modal-open'); // ADD THIS LINE
-        startDownloadCountdown();
+        // Re-fetch modal in case it was moved
+        const modalEl = document.getElementById('download-modal');
+        if (modalEl) {
+            modalEl.style.display = 'flex';
+            modalEl.classList.add('active');
+            document.body.classList.add('modal-open');
+            startDownloadCountdown();
+        }
     }
 
     function closeDownloadModal() {
-        modal.classList.remove('active');
-        document.body.classList.remove('modal-open'); // ADD THIS LINE
+        const modalEl = document.getElementById('download-modal');
+        if (modalEl) {
+            modalEl.classList.remove('active');
+            modalEl.style.display = 'none';
+            document.body.classList.remove('modal-open');
+        }
     }
 
     function startDownloadCountdown() {
