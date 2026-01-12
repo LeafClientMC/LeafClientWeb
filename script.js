@@ -82,10 +82,11 @@ document.addEventListener('DOMContentLoaded', () => {
         // --- MODAL CLICK HANDLER ---
         downloadBtn.addEventListener('click', (e) => {
             e.preventDefault(); // Stop immediate navigation
+            console.log("Download button clicked. Opening modal...");
             if (modal) {
                 openDownloadModal();
             } else {
-                // Fallback if modal doesn't exist for some reason
+                console.warn("Modal element not found. Fallback to direct download.");
                 window.location.href = downloadUrl;
             }
         });
@@ -130,6 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (seconds <= 0) {
                 clearInterval(timer);
                 // Trigger download
+                console.log("Countdown finished. Triggering download: " + downloadUrl);
                 window.location.href = downloadUrl;
                 
                 // Show "click here" link in case auto-download blocked

@@ -91,31 +91,35 @@
         </div>
     </footer>
 
-    <!-- DOWNLOAD INTERSTITIAL MODAL -->
-    <div id="download-modal" class="modal-overlay">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>Downloading Leaf Client...</h3>
-                <button id="close-modal" class="close-btn"><i class="fa-solid fa-xmark"></i></button>
-            </div>
-            <div class="modal-body">
-                <p>Your download will start automatically in <span id="countdown" class="text-gradient" style="font-weight: 800; font-size: 1.2rem;">5</span> seconds.</p>
-                
-                <p style="font-size: 0.8rem; color: #666; margin-top: 5px;">Sponsored</p>
-                <!-- Ad Unit inside Modal (300x250 size usually fits best here) -->
-                <div class="modal-ad-container">
-                    <iframe data-aa='2423964' src='//acceptable.a-ads.com/2423964/?size=300x250'
-                            style='border:0; padding:0; width:300px; height:250px; overflow:hidden; display: block; margin: auto'></iframe>
+        <!-- DOWNLOAD INTERSTITIAL MODAL -->
+        <div id="download-modal" class="modal-overlay">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Downloading Leaf Client...</h3>
+                    <button id="close-modal" class="close-btn"><i class="fa-solid fa-xmark"></i></button>
                 </div>
-                
-                <p class="small-text" style="margin-top: 1rem;">Support us by checking out our sponsor above!</p>
-                
-                <a id="force-download-link" href="#" class="text-link hidden" style="font-size: 0.9rem; margin-top: 10px; display: inline-block;">
-                    Click here if download doesn't start
-                </a>
+                <div class="modal-body">
+                    <p>Your download will start automatically in <span id="countdown" class="text-gradient" style="font-weight: 800; font-size: 1.2rem;">5</span> seconds.</p>
+                    
+                    <p style="font-size: 0.8rem; color: #666; margin-top: 5px;">Sponsored</p>
+                    <!-- Ad Unit inside Modal (300x250 size usually fits best here) -->
+                    <div class="modal-ad-container" style="background: #111; position: relative;">
+                        <!-- Fallback text behind iframe -->
+                        <p style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 0.8rem; color: #444; z-index: 0;">Ad Loading...</p>
+                        
+                        <iframe data-aa='2423964' src='//acceptable.a-ads.com/2423964/?size=300x250'
+                                style='border:0; padding:0; width:300px; height:250px; overflow:hidden; display: block; margin: auto; position: relative; z-index: 1;' allowtransparency="true"></iframe>
+                    </div>
+                    
+                    <p class="small-text" style="margin-top: 1rem;">Support us by checking out our sponsor above!</p>
+                    
+                    <a id="force-download-link" href="#" class="text-link hidden" style="font-size: 0.9rem; margin-top: 10px; display: inline-block;">
+                        Click here if download doesn't start
+                    </a>
+                </div>
             </div>
         </div>
-    </div>
+    
 
     <script src="script.js"></script>
 </body>

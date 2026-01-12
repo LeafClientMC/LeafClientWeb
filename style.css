@@ -707,9 +707,10 @@ footer {
     background: none;
     border: none;
     color: var(--text-secondary);
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     cursor: pointer;
     transition: color 0.2s;
+    padding: 5px;
 }
 
 .close-btn:hover {
@@ -720,11 +721,12 @@ footer {
     background: rgba(0,0,0,0.2);
     border-radius: 8px;
     padding: 1rem;
-    margin: 1.5rem 0;
+    margin: 1rem 0;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 250px;
+    border: 1px solid rgba(255,255,255,0.05);
 }
 
 .modal-body p {
@@ -734,6 +736,7 @@ footer {
 .hidden {
     display: none !important;
 }
+
 
 /* Mobile Responsive */
 @media (max-width: 768px) {
