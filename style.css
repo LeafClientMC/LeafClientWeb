@@ -18,13 +18,12 @@
     scroll-behavior: smooth;
 }
 
-/* --- UPDATED: html, body to support modal-open class --- */
 html, body {
-    height: 100%;
     margin: 0;
     padding: 0;
-    overflow-x: hidden; /* Prevent horizontal scroll */
+    overflow-x: hidden;
 }
+
 
 body {
     background-color: var(--bg-dark);
