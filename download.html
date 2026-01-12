@@ -18,13 +18,6 @@
     <meta property="og:description" content="The lightest, fastest, and most customizable open-source Minecraft client. Built for performance. Download the Beta now!">
     <meta property="og:image" content="https://private-user-images.githubusercontent.com/84229419/520244714-f2fe5c9a-1da8-495f-8109-5ef14507fbff.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjgyMzc2MDksIm5iZiI6MTc2ODIzNzMwOSwicGF0aCI6Ii84NDIyOTQxOS81MjAyNDQ3MTQtZjJmZTVjOWEtMWRhOC00OTVmLTgxMDktNWVmMTQ1MDdmYmZmLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjAxMTIlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwMTEyVDE3MDE0OVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTMxZmJmNjQxMzEyY2QzYjRhNDE0MWZiZWJlNTBhYzJiZDk4ZjYxMmIwYTE5YTkwMmJiM2QxMDRmNGRjNWFiZjQmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.8D9zWcRioCerJKAgA_jMp9OzuuqnHpYbTy9I-mFK8JA">
 
-    <!-- Twitter Card -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://leafclient.com/">
-    <meta property="twitter:title" content="Leaf Client | Boost Your FPS">
-    <meta property="twitter:description" content="The lightest, fastest, and most customizable open-source Minecraft client. Built for performance. Download the Beta now!">
-    <meta property="twitter:image" content="https://private-user-images.githubusercontent.com/84229419/520244714-f2fe5c9a-1da8-495f-8109-5ef14507fbff.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjgyMzc2MDksIm5iZiI6MTc2ODIzNzMwOSwicGF0aCI6Ii84NDIyOTQxOS81MjAyNDQ3MTQtZjJmZTVjOWEtMWRhOC00OTVmLTgxMDktNWVmMTQ1MDdmYmZmLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjAxMTIlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwMTEyVDE3MDE0OVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTMxZmJmNjQxMzEyY2QzYjRhNDE0MWZiZWJlNTBhYzJiZDk4ZjYxMmIwYTE5YTkwMmJiM2QxMDRmNGRjNWFiZjQmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.8D9zWcRioCerJKAgA_jMp9OzuuqnHpYbTy9I-mFK8JA">
-
     <!-- Discord Embed Color (Leaf Green) -->
     <meta name="theme-color" content="#2ecc71">
 </head>
@@ -64,6 +57,7 @@
                     <li><i class="fa-solid fa-check"></i> Windows 10/11 (64-bit)</li>
                     <li><i class="fa-solid fa-check"></i> 4GB RAM Minimum</li>
                 </ul>
+                <!-- Changed href to # to prevent immediate download, handled by JS -->
                 <a id="download-btn" href="#" class="btn-primary full-width">
                     <i class="fa-solid fa-file-zipper"></i> Download Zip
                 </a>
@@ -96,6 +90,32 @@
             <p>&copy; 2026 Leaf Client. Developed by ZiAD.</p>
         </div>
     </footer>
+
+    <!-- DOWNLOAD INTERSTITIAL MODAL -->
+    <div id="download-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Downloading Leaf Client...</h3>
+                <button id="close-modal" class="close-btn"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body">
+                <p>Your download will start automatically in <span id="countdown" class="text-gradient" style="font-weight: 800; font-size: 1.2rem;">5</span> seconds.</p>
+                
+                <p style="font-size: 0.8rem; color: #666; margin-top: 5px;">Sponsored</p>
+                <!-- Ad Unit inside Modal (300x250 size usually fits best here) -->
+                <div class="modal-ad-container">
+                    <iframe data-aa='2423964' src='//acceptable.a-ads.com/2423964/?size=300x250'
+                            style='border:0; padding:0; width:300px; height:250px; overflow:hidden; display: block; margin: auto'></iframe>
+                </div>
+                
+                <p class="small-text" style="margin-top: 1rem;">Support us by checking out our sponsor above!</p>
+                
+                <a id="force-download-link" href="#" class="text-link hidden" style="font-size: 0.9rem; margin-top: 10px; display: inline-block;">
+                    Click here if download doesn't start
+                </a>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
