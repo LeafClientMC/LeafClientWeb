@@ -49,47 +49,56 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeModalBtn = document.getElementById('close-modal');
     const countdownSpan = document.getElementById('countdown');
     const forceLink = document.getElementById('force-download-link');
-    let downloadUrl = "https://github.com/LeafClientMC/LeafClient/raw/refs/heads/main/latestexe/LeafClient.zip"; // Default fallback
+    
+    // Default fallback URL
+    let downloadUrl = "https://github.com/LeafClientMC/LeafClient/raw/refs/heads/main/latestexe/LeafClient.zip"; 
 
-    if (downloadBtn && versionText) {
-        fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/releases`)
-            .then(response => {
-                if (!response.ok) throw new Error('Network response was not ok');
-                return response.json();
-            })
-            .then(data => {
-                const latestRelease = data[0];
-
-                if (latestRelease) {
-                    versionText.textContent = `Version: ${latestRelease.tag_name}`;
-
-                    const zipAsset = latestRelease.assets.find(asset => asset.name.endsWith('.zip'));
-
-                    if (zipAsset) {
-                        // Store the dynamic URL instead of setting href directly
-                        downloadUrl = zipAsset.browser_download_url;
-                    } else {
-                        console.error('No .zip asset found in the latest release.');
-                        versionText.textContent = "Version found, but no Zip file.";
-                    }
-                }
-            })
-            .catch(error => {
-                console.error('Error fetching release data:', error);
-                versionText.textContent = "Version: Manual Download";
-            });
-            
-        // --- MODAL CLICK HANDLER ---
+    // --- DOWNLOAD BUTTON LOGIC ---
+    if (downloadBtn) {
+        // 1. Attach click listener IMMEDIATELY (don't wait for fetch)
         downloadBtn.addEventListener('click', (e) => {
-            e.preventDefault(); // Stop immediate navigation
-            console.log("Download button clicked. Opening modal...");
+            e.preventDefault(); // Stop any default link behavior
+            console.log("Download clicked. Modal exists?", !!modal);
+            
             if (modal) {
                 openDownloadModal();
             } else {
-                console.warn("Modal element not found. Fallback to direct download.");
+                // Fallback if modal is missing
+                console.warn("Modal not found, falling back to direct download.");
                 window.location.href = downloadUrl;
             }
         });
+
+        // 2. Fetch latest version in background to update text and URL
+        if (versionText) {
+            fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/releases`)
+                .then(response => {
+                    if (!response.ok) throw new Error('Network response was not ok');
+                    return response.json();
+                })
+                .then(data => {
+                    const latestRelease = data[0];
+
+                    if (latestRelease) {
+                        versionText.textContent = `Version: ${latestRelease.tag_name}`;
+
+                        const zipAsset = latestRelease.assets.find(asset => asset.name.endsWith('.zip'));
+
+                        if (zipAsset) {
+                            // Update the URL variable, so the modal uses the new link when it opens
+                            downloadUrl = zipAsset.browser_download_url;
+                            console.log("Updated download URL to:", downloadUrl);
+                        } else {
+                            console.error('No .zip asset found in the latest release.');
+                            versionText.textContent = "Version found, but no Zip file.";
+                        }
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching release data:', error);
+                    versionText.textContent = "Version: Manual Download";
+                });
+        }
     }
 
     // --- MODAL FUNCTIONS ---
@@ -119,6 +128,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function startDownloadCountdown() {
         let seconds = 5;
         if (countdownSpan) countdownSpan.innerText = seconds;
+        
+        // Setup the force link immediately
         if (forceLink) {
             forceLink.classList.add('hidden'); // Hide link initially
             forceLink.href = downloadUrl;      // Set dynamic URL
@@ -130,6 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (seconds <= 0) {
                 clearInterval(timer);
+                
                 // Trigger download
                 console.log("Countdown finished. Triggering download: " + downloadUrl);
                 window.location.href = downloadUrl;
