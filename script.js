@@ -166,7 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Trigger download
                 console.log("Countdown finished. Triggering download: " + downloadUrl);
-                window.location.href = downloadUrl;
+                window.location.href = downloadUrl; 
 
                 // Show "click here" link in case auto-download blocked
                 if (forceLink) {
