@@ -118,11 +118,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function openDownloadModal() {
         modal.classList.add('active');
+        document.body.classList.add('modal-open'); // ADD THIS LINE
         startDownloadCountdown();
     }
 
     function closeDownloadModal() {
         modal.classList.remove('active');
+        document.body.classList.remove('modal-open'); // ADD THIS LINE
     }
 
     function startDownloadCountdown() {

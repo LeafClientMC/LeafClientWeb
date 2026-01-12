@@ -18,10 +18,22 @@
     scroll-behavior: smooth;
 }
 
+/* --- UPDATED: html, body to support modal-open class --- */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
 body {
     background-color: var(--bg-dark);
     color: var(--text-primary);
     overflow-x: hidden;
+}
+
+body.modal-open {
+    overflow: hidden !important; /* Prevent scrolling of the background content when modal is active */
 }
 
 /* Navbar */
@@ -653,15 +665,16 @@ footer {
 
 /* Modal Styles */
 .modal-overlay {
-    position: fixed !important; /* Force fixed positioning */
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
+    position: fixed !important; /* Force fixed positioning relative to the viewport */
+    top: 0 !important; /* Force it to the top of the viewport */
+    left: 0 !important; /* Force it to the left of the viewport */
+    margin: 0 !important; /* Remove any inherited margins */
+    width: 100vw !important; /* Ensure full viewport width */
+    height: 100vh !important; /* Ensure full viewport height */
     background: rgba(0, 0, 0, 0.85);
     backdrop-filter: blur(5px);
-    z-index: 999999 !important; /* Force top layer */
-    display: none;
+    z-index: 999999 !important; /* Force it to be on top of all other content */
+    display: none; /* Hidden by default */
     justify-content: center;
     align-items: center;
     opacity: 0;
@@ -674,8 +687,8 @@ footer {
 }
 
 .modal-content {
-    background: #1a1a1a;
-    border: 1px solid #333;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
     border-radius: 16px;
     width: 90%;
     max-width: 400px;
@@ -684,7 +697,7 @@ footer {
     box-shadow: 0 20px 50px rgba(0,0,0,0.5);
     transform: translateY(20px);
     transition: transform 0.3s ease;
-    position: relative; /* Ensure content is positioned relative to modal */
+    position: relative; /* Keep this for positioning elements inside the modal if needed */
 }
 
 .modal-overlay.active .modal-content {
