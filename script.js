@@ -1,5 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
+
+    // Move modal to body to escape any transformed parents
+    const modalElement = document.getElementById('download-modal');
+    if (modalElement && modalElement.parentElement !== document.body) {
+        document.body.appendChild(modalElement);
+    }
+
+
     const revealElements = document.querySelectorAll('.scroll-reveal');
 
     const revealOnScroll = () => {
@@ -26,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const target = document.querySelector(targetId);
             if (target) {
                 e.preventDefault();
-                
+
                 const headerOffset = 90;
                 const elementPosition = target.getBoundingClientRect().top;
                 const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
@@ -43,15 +50,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const repoName = "LeafClient";
     const downloadBtn = document.getElementById('download-btn');
     const versionText = document.getElementById('version-text');
-    
+
     // --- DOWNLOAD MODAL ELEMENTS ---
     const modal = document.getElementById('download-modal');
     const closeModalBtn = document.getElementById('close-modal');
     const countdownSpan = document.getElementById('countdown');
     const forceLink = document.getElementById('force-download-link');
-    
+
     // Default fallback URL
-    let downloadUrl = "https://github.com/LeafClientMC/LeafClient/raw/refs/heads/main/latestexe/LeafClient.zip"; 
+    let downloadUrl = "https://github.com/LeafClientMC/LeafClient/raw/refs/heads/main/latestexe/LeafClient.zip";
 
     // --- DOWNLOAD BUTTON LOGIC ---
     if (downloadBtn) {
@@ -59,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
         downloadBtn.addEventListener('click', (e) => {
             e.preventDefault(); // Stop any default link behavior
             console.log("Download clicked. Modal exists?", !!modal);
-            
+
             if (modal) {
                 openDownloadModal();
             } else {
@@ -130,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function startDownloadCountdown() {
         let seconds = 5;
         if (countdownSpan) countdownSpan.innerText = seconds;
-        
+
         // Setup the force link immediately
         if (forceLink) {
             forceLink.classList.add('hidden'); // Hide link initially
@@ -143,11 +150,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (seconds <= 0) {
                 clearInterval(timer);
-                
+
                 // Trigger download
                 console.log("Countdown finished. Triggering download: " + downloadUrl);
                 window.location.href = downloadUrl;
-                
+
                 // Show "click here" link in case auto-download blocked
                 if (forceLink) {
                     forceLink.classList.remove('hidden');
