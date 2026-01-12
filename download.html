@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Leaf Client</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="logo">
+            <a href="index.html"
+                style="text-decoration: none; color: white; display: flex; align-items: center; gap: 0.8rem;">
+                <img src="https://github.com/LeafClientMC/LeafClient/assets/84229419/ecda377f-4666-4b94-a017-64cf80f11988"
+                    alt="Leaf Client Logo">
+                Leaf Client
+            </a>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="index.html#features">Features</a>
+            <a href="index.html#gallery">Gallery</a>
+            <a href="#" class="btn-nav">Download</a>
+        </div>
+    </nav>
+
+    <section class="hero download-hero">
+        <div class="hero-content">
+            <h1 class="fade-in">Select Your <span class="text-gradient">Platform</span></h1>
+            <p class="fade-in delay-1">Get the latest Beta version of Leaf Client.</p>
+        </div>
+
+        <div class="platform-grid fade-in delay-2">
+
+            <div class="platform-card active">
+                <i class="fa-brands fa-windows"></i>
+                <h3>Windows</h3>
+                <p id="version-text" class="version-text">Fetching latest...</p>
+                <ul class="req-list">
+                    <li><i class="fa-solid fa-check"></i> Windows 10/11 (64-bit)</li>
+                    <li><i class="fa-solid fa-check"></i> 4GB RAM Minimum</li>
+                </ul>
+                <a id="download-btn" href="#" class="btn-primary full-width">
+                    <i class="fa-solid fa-file-zipper"></i> Download Zip
+                </a>
+            </div>
+
+
+            <div class="platform-card disabled">
+                <i class="fa-brands fa-apple"></i>
+                <h3>macOS</h3>
+                <p class="version-text">Status: In Development</p>
+                <button class="btn-disabled full-width">
+                    Coming Soon
+                </button>
+            </div>
+
+            <div class="platform-card disabled">
+                <i class="fa-brands fa-linux"></i>
+                <h3>Linux</h3>
+                <p class="version-text">Status: In Development</p>
+                <button class="btn-disabled full-width">
+                    Coming Soon
+                </button>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Leaf Client. Developed by ZiAD.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
